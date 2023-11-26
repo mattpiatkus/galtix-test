@@ -5,8 +5,6 @@ from typing import Optional
 import numpy as np
 from gensim.models import KeyedVectors
 
-from process_phrases import phrase_list
-
 
 @dataclass
 class Word2VecProcessor:
@@ -81,8 +79,8 @@ class Word2VecProcessor:
         :param input_phrase: str
         :return: The closest phrase to the input phrase
         """
-        input_vector = self.phrase_to_vector(self.keyed_vectors, input_phrase)
+        input_vector = self.phrase_to_vector(input_phrase)
         similarities = self.keyed_vectors.cosine_similarities(input_vector, self.phrase_vectors)
         top_similarity_index = np.argmax(similarities)
 
-        return top_similarity_index, self.indexed_phrases[top_similarity_index]
+        return self.indexed_phrases[top_similarity_index]

@@ -1,0 +1,19 @@
+services:
+  application:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./vectors:/app/vectors
+    profiles:
+      - serve
+
+  test:
+    build: .
+    volumes:
+      - ./data:/app/data
+      - ./vectors:/app/vectors
+    entrypoint: ["poetry", "run", "pytest"]
+    profiles:
+      - test

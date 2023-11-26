@@ -6,11 +6,10 @@ import polars as pl
 from processors.word2vec_processor import Word2VecProcessor
 
 
-
 if __name__ == "__main__":
-    kv = KeyedVectors.load_word2vec_format(r'data/GoogleNews-vectors-negative300.bin', binary=True, limit=1000000)
+    kv = KeyedVectors.load_word2vec_format(r'vectors/GoogleNews-vectors-negative300.bin', binary=True, limit=1000000)
 
-    phrases = pl.read_csv('data/phrases.csv', encoding='windows-1252')
+    phrases = pl.read_csv('../data/inputs/phrases.csv', encoding='windows-1252')
 
     phrase_list = list(phrases['Phrases'])
 
@@ -21,6 +20,6 @@ if __name__ == "__main__":
     all_phrase_distances = processor.all_phrase_distances
 
     # The output format was not specified in requirements - output a json for now
-    with open('data/phrase_pair_vectors.json', 'w') as f:
+    with open('../data/outputs/phrase_pair_vectors.json', 'w') as f:
         json.dump(all_phrase_distances, f)
 
