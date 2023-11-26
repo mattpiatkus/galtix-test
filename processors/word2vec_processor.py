@@ -32,7 +32,7 @@ class Word2VecProcessor:
         self.phrase_vectors = np.vstack(vectors)
 
     def phrase_to_vector(self, phrase: str) -> np.ndarray:
-        vector = self.keyed_vectors.get_mean_vector(keys=list(phrase))
+        vector = self.keyed_vectors.get_mean_vector(keys=phrase.split())
 
         return vector
 
