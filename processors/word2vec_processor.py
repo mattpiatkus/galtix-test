@@ -75,7 +75,7 @@ class Word2VecProcessor:
                        input_phrase: str) -> tuple[int, str]:
         """
         Computes the closest phrase in phrase_vectors to the input phrase
-        :param phrase_vectors: dict where keys are phrases and values their vectors
+        :param phrase_vectors: numpy ndarray of phrase vectors
         :param input_phrase: str
         :return: The closest phrase to the input phrase
         """
