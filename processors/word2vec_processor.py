@@ -62,7 +62,7 @@ class Word2VecProcessor:
         """
         phrase_distances = {}
 
-        for index, pair in enumerate(combinations(phrase_list, 2)):
+        for index, pair in enumerate(combinations(self.phrase_list, 2)):
             distance = self.phrase_pair_to_distance(pair)
 
             phrase_details = {'pair': pair, 'distance': distance}
